@@ -1,0 +1,47 @@
+syntax = "proto2";
+
+package format;
+
+message Data {
+    required string action = 1;
+    optional Car car = 2;
+}
+
+message Engine {
+    optional uint32 capacity = 1;    // 'uint16' is not supported
+    optional uint32 numCylinders = 2;
+    optional uint32 maxRpm = 3;
+    optional string manufacturerCode = 4;    // 'char' is not supported
+}
+
+message FuelFigures {
+    optional uint32 speed = 1;    // 'uint16' is not supported
+    optional float mpg = 2;
+    optional string usageDescription = 3;
+}
+
+message Acceleration {
+    optional uint32 mph = 1;    // 'uint16' is not supported
+    optional float seconds = 2;
+}
+
+message PerformanceFigures {
+    optional uint32 octaneRating = 1;
+    optional Acceleration acceleration = 2;
+}
+
+message Car {
+    optional string ownerName = 1;
+    required uint64 serialNumber = 2;
+    optional uint64 modelYear = 3;
+    optional string code = 4;
+    optional string vehicleCode = 5;
+
+    optional Engine engine = 6;
+    optional FuelFigures fuelFigures = 7;
+    optional PerformanceFigures performanceFigures = 9;
+
+    optional string manufacturer = 10;
+    optional string model = 11;
+    optional string activationalCode = 12;
+}
